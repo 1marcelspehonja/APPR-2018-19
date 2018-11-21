@@ -8,7 +8,8 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 ## Tematika
 
 Izbrali si boste temo, s katero se bo vaš projekt ukvarjal.
-Tukaj boste napisali, kje ste dobili podatke, ter kakšen je vaš cilj.
+Tukaj boste napisali, kje ste dobili podatke, ter kakšen je vaš cilj.podatki.
+
 
 ## Program
 
