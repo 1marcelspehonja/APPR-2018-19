@@ -16,9 +16,10 @@ V projektu bom analiziral kako različni dejavniki vplivajo na rodnost oz. natal
 * 5.tabela: Stopnja umrljivosti pri rojstvu
 
 VIRI:
+* https://data.oecd.org/pop/population.htm
 * http://data.un.org/Default.aspx 
 * https://data.worldbank.org/indicator 
-* https://data.oecd.org/pop/population.htm 
+* http://databank.worldbank.org/data/reports.aspx?Code=NY.GDP.PCAP.CD&id=1ff4a498&report_name=Popular-Indicators&populartype=series&ispopular=y#
 
 ## Program
 
