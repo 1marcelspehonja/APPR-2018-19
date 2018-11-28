@@ -5,11 +5,20 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 * [![Shiny](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/APPR-2018-19/master?urlpath=shiny/APPR-2018-19/projekt.Rmd) Shiny
 * [![RStudio](http://mybinder.org/badge.svg)](http://beta.mybinder.org/v2/gh/jaanos/APPR-2018-19/master?urlpath=rstudio) RStudio
 
-## Tematika
+## Analiza dejavnikov rodnosti
 
-Izbrali si boste temo, s katero se bo vaš projekt ukvarjal.
-Tukaj boste napisali, kje ste dobili podatke, ter kakšen je vaš cilj.podatki.
+V projektu bom analiziral kako različni dejavniki vplivajo na rodnost oz. nataliteto. Analizirala bom, kako je rodnost posameznih držav odvisna od različnih dejavnikov, kot so stopnja ekonomske razvitosti države, izobraženost, brezposelnost, pričakovana življenjska doba. Analiziral bom tudi stopnjo umrljivosti pr rojstvu in jo primerjal z ostalimi podatki. 
 
+* 1.tabela: Rodnost po posameznih državah skozi leta
+* 2.tabela: BDP na prebivalca za posamezna leta
+* 3.tabela: Pričakovana življenjska doba
+* 4.tabela: Stopnja izobrazbe žensk po državah
+* 5.tabela: Stopnja umrljivosti pri rojstvu
+
+VIRI:
+* http://data.un.org/Default.aspx 
+* https://data.worldbank.org/indicator 
+* https://data.oecd.org/pop/population.htm 
 
 ## Program
 
