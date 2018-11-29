@@ -7,7 +7,7 @@ Repozitorij z gradivi pri predmetu APPR v študijskem letu 2018/19
 
 ## Analiza dejavnikov rodnosti
 
-V projektu bom analiziral kako različni dejavniki vplivajo na rodnost oz. nataliteto. Nataliteta je število, ki pove, koliko (ţivih) otrok se rodi v letu na tisoč prebivalcev.  Analizirala bom, kako je rodnost posameznih držav odvisna od različnih dejavnikov, kot so stopnja ekonomske razvitosti države, izobraženost, brezposelnost, pričakovana življenjska doba. Analiziral bom tudi stopnjo umrljivosti pr rojstvu in jo primerjal z ostalimi podatki.  
+V projektu bom analiziral kako različni dejavniki vplivajo na rodnost oz. nataliteto. Nataliteta je število, ki pove, koliko (živih) otrok se rodi v letu na tisoč prebivalcev.  Analiziral bom, kako je rodnost posameznih držav odvisna od različnih dejavnikov, kot so stopnja ekonomske razvitosti države, izobraženost, brezposelnost, pričakovana življenjska doba. Analiziral bom tudi stopnjo umrljivosti pr rojstvu in jo primerjal z ostalimi podatki.  
 Cilj naloge je ugotoviti ali imajo bolj razvite države res nižjo rodnost, kot države v razvoju, in kateri so najbolj pomembni dejavniki ki vplivajo na rodnost.
 
 * 1.tabela: Rodnost po posameznih državah skozi leta
