@@ -22,24 +22,22 @@ library(ggplot2)
 #   summarise(povprecje=sum(velikost.druzine * stevilo.druzin) / sum(stevilo.druzin))
 
 
-#graf1
-zdruzeni.podatki.krajse1 <- filter(zdruzeni.podatki.krajse,Leto==2018)[sample(nrow(filter(zdruzeni.podatki.krajse,Leto==2018)), 40), ]
+#graf1 Rodnost naključnih 40 držav leta 2018
+drzave <- filter(zdruzeni.podatki.krajse,Leto==2018)[sample(nrow(filter(zdruzeni.podatki.krajse,Leto==2018)), 40), 1]
+zdruzeni.podatki.krajse <- filter(zdruzeni.podatki.krajse, Leto %in% c(2000,2018), Drzava %in% drzave)
 
-graf1 <- dotchart(filter(arrange(zdruzeni.podatki.krajse1,Rodnost), Leto==2018)$Rodnost,
-                  labels=filter(arrange(zdruzeni.podatki.krajse1,Rodnost), Leto==2018)[,1], cex=.7, 
-                  main="Rodnost", xlab="Stevilo rojstev na 1000 prebivalcev")
-remove(zdruzeni.podatki.krajse1)
+graf1 <- dotchart(filter(arrange(zdruzeni.podatki.krajse, Rodnost), Leto==2018)$Rodnost,
+                  labels=filter(arrange(zdruzeni.podatki.krajse, Rodnost), Leto==2018)[,1], cex=.7, 
+                  main="Rodnost leta 2018", xlab="Stevilo rojstev na 1000 prebivalcev")
 
-#graf2
-zdruzeni.podatki.krajse2 <- filter(zdruzeni.podatki.krajse,Leto==2000)[sample(nrow(filter(zdruzeni.podatki.krajse,Leto==2018)), 40), ]
-
-graf2 <- dotchart(filter(arrange(zdruzeni.podatki.krajse2,Rodnost), Leto==2000)$Rodnost,
-                  labels=filter(arrange(zdruzeni.podatki.krajse2,Rodnost), Leto==2000)[,1], cex=.7, 
-                  main="Rodnost", xlab="Stevilo rojstev na 1000 prebivalcev")
-remove(zdruzeni.podatki.krajse2)
+#graf2 Rodnost naključnih 40 držav leta 2000
+graf2 <- dotchart(filter(arrange(zdruzeni.podatki.krajse, Rodnost), Leto==2000)$Rodnost,
+                  labels=filter(arrange(zdruzeni.podatki.krajse, Rodnost), Leto==2000)[,1], cex=.7, 
+                  main="Rodnost leta 2000", xlab="Stevilo rojstev na 1000 prebivalcev")
+remove(zdruzeni.podatki.krajse, drzave)
 
 
-#graf3 
+#graf3 Rodnost sedmih držav skozi leta
 zdruzeni.podatki$Leto <- as.numeric(as.character(zdruzeni.podatki$Leto))
 graf3 <- ggplot(zdruzeni.podatki %>% filter(Drzava %in% c('Slovenia',
                                                           'Germany',
@@ -60,7 +58,8 @@ graf3 <- ggplot(zdruzeni.podatki %>% filter(Drzava %in% c('Slovenia',
                     breaks=c('Slovenia', 'Germany', 'China', 'Japan', 'Nigeria',  'Iraq', 'South Africa', 'India'),
                     labels=c('Slovenia', 'Germany', 'China', 'Japan', 'Nigeria', 'Iraq', 'South Africa', 'India'))
   
-#graf4
+
+#graf4 rodnost skozi leta glede na religijo
 religija.povprecje$Leto <- as.numeric(as.character(religija.povprecje$Leto))
 graf4 <- ggplot(religija.povprecje,
                 aes(x=Leto, y=religija.povprecje$"Povprecje rodnost", color=Religija)) +
@@ -71,6 +70,29 @@ graf4 <- ggplot(religija.povprecje,
   scale_colour_manual(values=c("dodgerblue3","purple","springgreen4","black","tan1","dark grey","maroon"))
 
 
-#graf5
+#graf5 Rodnost skozi leta glede na celino
+
+#celina.povprecje$Leto <- as.numeric(as.character(celina.povprecje$Leto))
+graf5 <- ggplot(zdruzeni.podatki %>% filter(Leto==2018) %>% drop_na(Celina), aes(x=Celina, y=Rodnost)) +
+  geom_boxplot() + theme_classic() +
+  scale_y_log10() + geom_point() +
+  labs(x="Celina", y ="Stevilo rojstev na 1000 prebivalcev", title ="Rodnost glede na celino leta 2018") +
+  theme(plot.title = element_text(hjust = 0.5)) 
+
+
+#graf6 
+graf6 <- ggplot(zdruzeni.podatki %>% filter(Leto==2018), 
+                aes(x=filter(zdruzeni.podatki,Leto==2018)$"GDP PPP ($)", y=filter(zdruzeni.podatki,Leto==2018)$Rodnost)) +
+  theme_classic() +
+  geom_point(shape=21, size=2.5, fill= "black") +
+  labs(x="BDP PPP ($)", y ="Stevilo rojstev na 1000 prebivalcev", title ="Povezava rodnosti in BDP-ja") +
+  geom_smooth(method = 'loess', se = FALSE)
+
+
+#graf7
+
+
+
+
 
 
