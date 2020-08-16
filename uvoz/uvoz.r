@@ -105,11 +105,11 @@ zdruzeni.podatki <- inner_join(podatki.gdp, select(podatki.prebivalci, c(1,3,4))
   left_join(., podatki.celine, by='Drzava') 
 
 religija.povprecje <- zdruzeni.podatki %>% group_by(Religija, Leto) %>% 
-  summarise('Povprecje BDP'=mean(`GDP PPP ($)`), 'Povprecje rodnost'=mean(`St. rojstev na 1000 preb.`)) %>% 
+  summarise('Povprecje BDP'=mean(`GDP PPP ($)`), 'Povprecje rodnost'=mean(`Rodnost`)) %>% 
   drop_na()
 
 celina.povprecje <- zdruzeni.podatki %>% group_by(Celina, Leto) %>% 
-  summarise('Povprecje BDP'=mean(`GDP PPP ($)`), 'Povprecje rodnost'=mean(`St. rojstev na 1000 preb.`)) %>% 
+  summarise('Povprecje BDP'=mean(`GDP PPP ($)`), 'Povprecje rodnost'=mean(`Rodnost`)) %>% 
   drop_na()
 
 
@@ -125,9 +125,7 @@ zdruzeni.podatki.krajse <- inner_join(podatki.gdp, select(podatki.prebivalci, c(
 
 
 #zdruzeni.podatki %>% filter(is.na(Religija)) %>% View
-zdruzeni.podatki %>% filter(Leto==2018) %>% View
-
-
+#zdruzeni.podatki %>% filter(Leto==2018) %>% View
 #____________________________________________________________________________________________
 sapply(podatki.gdp, class)
 sapply(podatki.rodnost, class)
