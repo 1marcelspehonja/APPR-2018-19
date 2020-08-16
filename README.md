@@ -13,14 +13,16 @@ Cilj naloge je ugotoviti ali imajo bolj razvite države res nižjo rodnost, kot 
 * 1.tabela: Rodnost po posameznih državah skozi leta
 * 2.tabela: BDP na prebivalca za posamezna leta
 * 3.tabela: Pričakovana življenjska doba
-* 4.tabela: Stopnja izobrazbe žensk po državah
+* 4.tabela: Stopnja izobrazbe po državah
 * 5.tabela: Stopnja umrljivosti novorojenčkov
+* 6.tabela: Število splavov
 
 VIRI:
 * https://data.oecd.org/pop/population.htm
 * http://data.un.org/Default.aspx 
 * https://data.worldbank.org/indicator 
 * http://databank.worldbank.org/data/reports.aspx?Code=NY.GDP.PCAP.CD&id=1ff4a498&report_name=Popular-Indicators&populartype=series&ispopular=y#
+* https://gateway.euro.who.int/en/indicators/hfa_587-7011-number-of-abortions-all-ages/
 
 ## Program
 

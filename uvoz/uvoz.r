@@ -7,6 +7,7 @@ library(mosaic)
 library(maptools)
 library(reshape2)
 library(ggplot2)
+library(tidyverse)
 
 # 2. faza: Uvoz podatkov
 
@@ -102,7 +103,7 @@ zdruzeni.podatki <- inner_join(podatki.gdp, select(podatki.prebivalci, c(1,3,4))
   left_join(., select(podatki.izobrazba, c(1,3,4)), by=c('Drzava', 'Leto')) %>%
   left_join(., podatki.splavi, by=c('Kratica', 'Leto')) %>%
   left_join(., select(podatki.religija, c(1,4)), by=c('Drzava')) %>%
-  left_join(., podatki.celine, by='Drzava') 
+  left_join(., podatki.celine, by='Drzava') %>% select(-2)
 
 religija.povprecje <- zdruzeni.podatki %>% group_by(Religija, Leto) %>% 
   summarise('Povprecje BDP'=mean(`GDP PPP ($)`), 'Povprecje rodnost'=mean(`Rodnost`)) %>% 
@@ -121,7 +122,7 @@ zdruzeni.podatki.krajse <- inner_join(podatki.gdp, select(podatki.prebivalci, c(
   left_join(., select(podatki.izobrazba, c(1,3,4)), by=c('Drzava', 'Leto')) %>%
   left_join(., podatki.splavi, by=c('Kratica', 'Leto')) %>%
   inner_join(., select(podatki.religija, c(1,4)), by=c('Drzava')) %>%
-  inner_join(., podatki.celine, by='Drzava') 
+  inner_join(., podatki.celine, by='Drzava') %>% select(-2)
 
 
 #zdruzeni.podatki %>% filter(is.na(Religija)) %>% View
@@ -142,12 +143,6 @@ remove(podatki.gdp, podatki.izobrazba, podatki.rodnost, podatki.splavi,
        podatki.umrljivost.novorojenckov, podatki.zivlj.doba)
 remove(podatki.prebivalci, podatki.celine, podatki.religija)
 
-# # Funkcija, ki uvozi podatke o številu novorojenih otrok iz csv dokumenta
-# podatki.otroci.na.zensko <- read_csv("podatki/št_otrok_na_žensko.csv", skip=5, 
-#                                      col_names=c('Drzava', 'Kratica', 'St. otrok na zensko', 'Koda', 1960:2019), 
-#                                      na=":",locale=locale(encoding="Windows-1250"))
-# 
-# podatki.otroci.na.zensko <- podatki.otroci.na.zensko %>% select('Drzava', 'Kratica', 45:63) %>% drop_na(11:21)
-# 
-# podatki.otroci.na.zensko <- melt(podatki.otroci.na.zensko, id.vars=c('Drzava', 'Kratica'), measure.vars=3:21, value.name='St. otrok na zensko', variable.name='Leto', 
-#                                  na.rm=FALSE) %>% arrange(Drzava)
+
+
+
