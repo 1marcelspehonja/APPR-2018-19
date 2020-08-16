@@ -10,6 +10,10 @@ output:
 runtime: shiny
 ---
 
+<style type="text/css">
+
+</style>
+
 ```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
 # Če želimo nastaviti pisave v PDF-ju, odkomentiramo
 # in sledimo navodilom v programu.
@@ -27,6 +31,55 @@ source("lib/rstudio.r", encoding="UTF-8")
 # Izbira tem
 
 Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
+
+![](slike/birth_rate.jpg){width=50%}
+
+
+```{r uvoz, echo=FALSE, message=FALSE, warning=FALSE}
+source("uvoz/uvoz.r", encoding="UTF-8")
+```
+
+Uvozili smo podatke o državah sveta v obliki CSV s spletne strani WorldBank. Podatke sem uredil v tri razpredelnice v obliki *tidy data*.
+
+1. `Drzave sveta` - podatki o državah sveta
+  - `Drzava` - spremenljivka: ime države (neurejen faktor),
+  - `Leto` - spremenljivka: Podatki Podatki o letu (števila od 2000 do 2018),
+  - `GDP PPP ($)` - meritev: BDP po kupni moči (PPP) v ameriških dolarjih (število),
+  - `Prebivalci` - meritev: število prebivalcev v posamezni državi (število),
+  - `Rodnost` - meritev: Število novorojenih otrok na 1000 ljudi (število),
+  - `Pricakovana zivlj. doba` - meritev: Pričakovana življenjska doba ob rojstvu (število),
+  - `Umrljivost novorojenckov` - meritev: Število smrti novorojenčkov na 1000 rojstev (število),
+  - `Procent vpisa v srednjo solo` - meritev: Procent vpisa otrok v srednjo šolo (število),
+  - `Stevilo splavov` - meritev: Število splavov v enem letu (število).
+  
+2. `Celine` - podatki po celinah
+  - `Celina` - spremenljivka: ime celine (neurejen faktor),
+  - `Leto` - spremenljivka: Podatki o letu (števila od 2000 do 2018),
+  - `Povprecje BDP` - meritev: Povprečen BDP po kupni moči (PPP) v ameriških dolarjih (število),
+  - `Povprecje rodnost` - meritev: Povprečno število novorojenih otrok na 1000 ljudi (število).
+  
+3. `Religije` - podatki po religijah
+  - `Religija` - spremenljivka: ime religije (neurejen faktor),
+  - `Leto` - spremenljivka: Podatki o letu (števila od 2000 do 2018),
+  - `Povprecje BDP` - meritev: Povprečen BDP po kupni moči (PPP) v ameriških dolarjih (število),
+  - `Povprecje rodnost` - meritev: Povprečno število novorojenih otrok na 1000 ljudi (število).
+
+
+```{r vizualizacija, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+source("vizualizacija/vizualizacija.r", encoding="UTF-8")
+```
+&nbsp;
+```{r graf9, echo=FALSE, message=FALSE, fig.align='center', warning = FALSE}
+print(graf3)
+```
+&nbsp;
+
+&nbsp;
+
+```{r shiny, echo=FALSE, warning = FALSE}
+shinyAppDir("shiny", options=list(width="100%", height=800))
+```
+
 
 <!-- ![](slike/grb.png) -->
 
@@ -105,6 +158,6 @@ Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
 
 ***
 
-```{r shiny, echo=FALSE}
-shinyAppDir("shiny", options=list(width="100%", height=600))
-```
+# ```{r shiny, echo=FALSE}
+# shinyAppDir("shiny", options=list(width="100%", height=600))
+# ```
