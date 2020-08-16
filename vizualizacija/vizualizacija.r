@@ -6,6 +6,7 @@ library(mosaic)
 library(maptools)
 library(reshape2)
 library(ggplot2)
+library(tidyverse)
 
 # 3. faza: Vizualizacija podatkov
 
@@ -23,7 +24,7 @@ library(ggplot2)
 
 
 #graf1 Rodnost naključnih 40 držav leta 2018
-drzave <- filter(zdruzeni.podatki.krajse,Leto==2018)[sample(nrow(filter(zdruzeni.podatki.krajse,Leto==2018)), 40), 1]
+drzave <- filter(zdruzeni.podatki.krajse,Leto==2018)[sample(nrow(filter(zdruzeni.podatki.krajse,Leto==2018)), 30), 1]
 zdruzeni.podatki.krajse <- filter(zdruzeni.podatki.krajse, Leto %in% c(2000,2018), Drzava %in% drzave)
 
 graf1 <- dotchart(filter(arrange(zdruzeni.podatki.krajse, Rodnost), Leto==2018)$Rodnost,
@@ -83,7 +84,7 @@ graf5 <- ggplot(zdruzeni.podatki %>% filter(Leto==2018) %>% drop_na(Celina), aes
 print(graf5)
 
 
-#graf6 Povezava med Rodnostjo in BDP ter Pricakovano zivljenjsko dobo
+#graf6 Povezava med Rodnostjo in BDP, Pricakovano zivljenjsko dobo ter umrljivostjo novorojenckov
 mid<-mean(filter(zdruzeni.podatki,Leto==2018)$"Pricakovana zivljenjska doba")
 graf6 <- ggplot(zdruzeni.podatki %>% filter(Leto==2018), 
                 aes(x = filter(zdruzeni.podatki,Leto==2018)$"GDP PPP ($)", 
@@ -130,6 +131,41 @@ graf8 <- ggplot(zdruzeni.podatki %>% filter(Leto==2010),
   geom_smooth(method = 'loess', se = FALSE, color="red", size=1.2)
 print(graf8)
 
+
+#graf9
+
+
+# Zemljevid sveta - Rodnost
+source("https://raw.githubusercontent.com/jaanos/APPR-2018-19/master/lib/uvozi.zemljevid.r")
+
+zemljevid <- uvozi.zemljevid("http://www.naturalearthdata.com/http//www.naturalearthdata.com/download/50m/cultural/ne_50m_admin_0_countries.zip",
+                             "ne_50m_admin_0_countries", mapa = "zemljevidi", pot.zemljevida = "", encoding = "UTF-8") %>% fortify()
+
+rodnost.2018 <- zdruzeni.podatki %>% filter(Leto==2018) %>% select(c(Drzava, Rodnost) )%>% 
+  mutate_all(funs(str_replace(., "Russian Federation", "Russia"))) %>%
+  mutate_all(funs(str_replace(., "United States", "United States of America")))%>%
+  mutate_all(funs(str_replace(., "Egypt, Arab Rep.", "Egypt")))%>%
+  mutate_all(funs(str_replace(., "Congo, Dem. Rep.", "Dem. Rep. Congo")))%>%
+  mutate_all(funs(str_replace(., "Central African Republic", "Central African Rep.")))
+rodnost.2018$Rodnost <- as.numeric(as.character(rodnost.2018$Rodnost))
+
+zemljevid.rodnost <- ggplot() + geom_polygon(data=zemljevid %>% left_join(rodnost.2018, by=c("NAME"="Drzava")),
+                                                aes(x=long, y=lat, group=group, fill=Rodnost),alpha = 0.8, color = "black") + 
+  coord_cartesian(xlim=c(-150, 170), ylim=c(-50, 80)) +
+  scale_fill_gradient2(low ="yellow", mid = "red", high = "blue",midpoint = 25, na.value = "white")+
+  xlab("") + ylab("") + ggtitle("Rodnost po drzavah sveta") +
+  theme(plot.title = element_text(hjust = 0.5))
+
+
+
+#____________________________________________________________________________________________
+rodnost.vse <- zdruzeni.podatki %>% select(c(Drzava, Leto, Rodnost) )%>% 
+  mutate_all(funs(str_replace(., "Russian Federation", "Russia"))) %>%
+  mutate_all(funs(str_replace(., "United States", "United States of America")))%>%
+  mutate_all(funs(str_replace(., "Egypt, Arab Rep.", "Egypt")))%>%
+  mutate_all(funs(str_replace(., "Congo, Dem. Rep.", "Dem. Rep. Congo")))%>%
+  mutate_all(funs(str_replace(., "Central African Republic", "Central African Rep.")))
+rodnost.vse$Rodnost <- as.numeric(as.character(rodnost.vse$Rodnost))
 
 
 
