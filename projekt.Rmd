@@ -89,7 +89,7 @@ Uvozili smo podatke o državah sveta v obliki CSV s spletne strani WorldBank. Po
   - `Povprecje rodnost` - meritev: Povprečno število novorojenih otrok na 1000 ljudi (število).
 
 
-***
+
 # Analiza in vizualizacija podatkov
 
 ```{r vizualizacija, echo=FALSE, message=FALSE, warning=FALSE, results='hide', fig.show = 'hide'}
@@ -154,14 +154,14 @@ print(graf4)
 Grafični prikaz rodnosti po državah nam pokaže dobro sliko z zemljevidom s pomočjo Shiny-ja. Opaziti je mogoče kako iztopajo nerazvite države predvsem v srednji Afriki. Če primerjamo zemljevid ob različnih letih lahko opazimo tudi, da barve postajajo vedno bolj svetle, torej se je rodnost v zadnjih 18 letih v večini držav res zmanjšala.
 
 ```{r shiny, echo=FALSE, warning = FALSE}
-shinyAppDir("shiny", options=list(width="100%", height=800))
+shinyAppDir("shiny", options=list(width="100%", height=400))
 ```
-
-&nbsp;
 
 # Zaključek
 
+Iz dane analize ugotovimo, da je rodnost v gospodarsko in socialno bolj razvitih državah občutno manjša kot v nerazvitih državah tretjega sveta. Največjo nataliteto imajo tako države srednje Afrike. Pomembno vlogo pri številu novorojenih otrok ima tudi vera. Ugotovil pa sem tudi da se je rodnost v zadnjih 18 letih v večini držav zmanjšala.
 
+&nbsp;
 
 <!-- *** -->
 
@@ -171,14 +171,3 @@ shinyAppDir("shiny", options=list(width="100%", height=800))
 <!-- source("analiza/analiza.r", encoding="UTF-8") -->
 <!-- ``` -->
 
-<!-- Spodnji graf prikazuje povezavo med številom naselij in površino občine. -->
-
-<!-- ```{r graf, echo=FALSE, fig.align='center', fig.cap='Povezava med številom naselij in površino občine'} -->
-<!-- ggplot(inner_join(obcine, data.frame(obcina=names(skupine), -->
-<!--                                      skupina=factor(skupine)), by="obcina") -->
-<!-- , aes(x=povrsina, y=naselja, color=skupina, size=prebivalci/1000)) + geom_point() + -->
-<!--   ggtitle("Število naselij glede na površino občine") + -->
-<!--   xlab(expression("Površina (km"^2 * ")")) + ylab("Št. naselij") + -->
-<!--   guides(color=guide_legend(title="Skupina"), -->
-<!--          size=guide_legend(title="Prebivalci (* 1000)")) -->
-<!-- ``` -->
