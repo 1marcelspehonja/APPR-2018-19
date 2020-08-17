@@ -96,7 +96,7 @@ Uvozili smo podatke o državah sveta v obliki CSV s spletne strani WorldBank. Po
 source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
 
-Najprej sem si izbral osem držav iz različnih delov sveta in 
+Najprej sem si izbral osem držav iz različnih delov sveta. Spodnji graf nam predstavlja rodnost teh držav, torej število novorojenih otrok na tisoč prebivalcev, v letih od 2000 do 2018. Po pričakovanjih imajo največje vredosti državi tretjega sveta, Nigerija in Irak. Nigerija je imela leta 2000 kar 43,1 novorojenih otrok na tisoč prebivalcev. Vrednosti večine držav v razvoju so se v obravnavanem obdobju opazno zmanjšale. Bolj razvite države kot so Slovenija, Nemčija in Japonska pa imajo najmanjše vrednosti.
 
 &nbsp;
 
@@ -105,6 +105,31 @@ print(graf3)
 ```
 
 &nbsp;
+
+Zanimalo me je kako je stopnja rodnosti povezana s podatki o splošni razvitosti posameznih držav. V spodnjem grafu sem prikazal podatke o rodnosti v odvisnoti od bruto domačega proizvoda po kupni moči, pričakovane življenjske dobe ob rojstvu in umrljivosti novorojenčkov na 1000 rojstev. Vsi podatki so za leto 2018.
+
+
+&nbsp;
+
+```{r graf6, echo=FALSE, message=FALSE, fig.align='center', warning = FALSE}
+print(graf6)
+```
+
+&nbsp;
+
+
+
+&nbsp;
+
+
+
+&nbsp;
+
+
+
+&nbsp;
+
+
 
 &nbsp;
 

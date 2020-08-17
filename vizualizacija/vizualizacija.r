@@ -54,8 +54,8 @@ graf3 <- ggplot(zdruzeni.podatki %>% filter(Drzava %in% c('Slovenia',
   geom_point(shape=21, size=2.5, fill= "black") +
   geom_line(size = 1.2) + 
   theme_classic() +
-  labs(x="Leto", y ="Stevilo novorojenih otrok na 1000 prebivalcev", title ="Rodnost") +
-  theme(axis.title=element_text(size=11), plot.title=element_text(size=15, hjust=0.5)) + 
+  labs(x="Leto", y ="Stevilo novorojenih otrok na 1000 prebivalcev", title ="Rodnost izbranih držav") +
+  theme(axis.title=element_text(size=11), plot.title=element_text(size=13, hjust=0.5)) + 
   scale_colour_manual(values=c("orangered3","dark grey","yellow","tan1","orchid2","springgreen4","dodgerblue3","purple","black"), 
                     name="Drzava",
                     breaks=c('Nigeria', 'Iraq', 'South Africa', 'India', 'Brazil', 'China', 'Germany', 'Slovenia', 'Japan'),
@@ -96,9 +96,10 @@ graf6 <- ggplot(zdruzeni.podatki %>% filter(Leto==2018),
   geom_point() +
   scale_size(range = c(1,6)) +
   labs(x="BDP PPP ($)", y ="Stevilo novorojenih otrok na 1000 prebivalcev", 
-       title ="Povezava rodnosti, BDP-ja, pricakovane zivljenjske dobe ter umrljivostjo novorojenckov leta 2018", 
+       title ="Povezava rodnosti, BDP, zivljenjske dobe ter umrljivostjo novorojenckov leta 2018", 
        colour="Pricakovana zivljenjska doba",
        size="Umrljivost novorojenckov \nna 1000 rojstev") +
+  theme(plot.title=element_text(size=10, hjust=0.5)) +
   geom_smooth(method = 'loess', se = FALSE, color="black", size=1.5) +
   scale_color_gradient2(midpoint=mid, low="blue", high="yellow", mid="red")
 print(graf6)
