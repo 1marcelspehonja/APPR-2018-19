@@ -117,7 +117,7 @@ graf7 <- ggplot(zdruzeni.izobrazba %>% filter(Leto==2018),
        title ="Povezava rodnosti in stopnje izobrazbe") +
   geom_smooth(method = 'loess', se = FALSE, color="red", size=1.2)
 print(graf7)
-remove(zdruzeni.izobrazba)
+#remove(zdruzeni.izobrazba)
 
 
 #graf8 Povezava med rodnostjo in številom splavov

@@ -107,7 +107,7 @@ print(graf3)
 &nbsp;
 
 Zanimalo me je kako je stopnja rodnosti povezana s podatki o splošni razvitosti posameznih držav. V spodnjem grafu sem prikazal podatke o rodnosti v odvisnoti od bruto domačega proizvoda po kupni moči, pričakovane življenjske dobe ob rojstvu in umrljivosti novorojenčkov na 1000 rojstev. Vsi podatki so za leto 2018.
-
+Kot vidimo je zelo očitno, da sta rodnosti in bruto domači proizvod negativno povezana, torej bolj razvite države imajo v splošnem nižjo rodnost. Podobno velja za pričakovano življenjsko dobo. Tudi pri umrljivosti novorjenčkov so rezultati po pričakovanjih, saj imajo bolj razvite države boljšo zdravstveno oskrbo in je zato stopnja umrljivosti nižja.
 
 &nbsp;
 
@@ -117,52 +117,51 @@ print(graf6)
 
 &nbsp;
 
-
-
-&nbsp;
-
-
+Pomemben dejavnik rodnosti je tudi stopnja izobrazbe prebivalcev, predvsem mlajše generacije. V tem primeru sem uporabil podatek o deležu vpisa v srednjo šolo leta 2018. Kot vidimo je izobrazba pomemben faktor rodnosti, saj v grafu opazimo očitno negativno linearno povezanost 
 
 &nbsp;
 
+```{r graf7, echo=FALSE, message=FALSE, fig.align='center', warning = FALSE}
+print(graf7)
+```
 
+&nbsp;
+
+# Analiza rodnosti po celinah in religijah
+
+Rodnost sem analiziral tudi glede na posamezno celino in prevladujočo vero posamezne države. prvi graf nam predstavlja povprečno število novorojenih otrok na tisoč prebivalcev za posamezno celino leta 2018. Pomembno je pripomniti, da v tem primeru pod Severno Ameriko spadajo tudi države Srednje Amerike.
 
 &nbsp;
 
-
+```{r graf5, echo=FALSE, message=FALSE, fig.align='center', warning = FALSE}
+print(graf5)
+```
 
 &nbsp;
+
+V drugem grafu pa sem države razporedil glede na prevladujočo religijo, izračunal povprečno rodnost in rezultat prikazal v črtnem diagramu za obdobje od 2000 do 2018. Največ novorojenih otrok imajo države islama, najmanj pa neverujoče države. V grafu močno iztopa hinduizem, saj se mu je rodnost v zadnjih 18 letih močno zmanjšala.
+
+&nbsp;
+
+```{r graf4, echo=FALSE, message=FALSE, fig.align='center', warning = FALSE}
+print(graf4)
+```
+
+&nbsp;
+
+# Zemljevid
+
+Grafični prikaz rodnosti po državah nam pokaže dobro sliko z zemljevidom s pomočjo Shiny-ja. Opaziti je mogoče kako iztopajo nerazvite države predvsem v srednji Afriki. Če primerjamo zemljevid ob različnih letih lahko opazimo tudi, da barve postajajo vedno bolj svetle, torej se je rodnost v zadnjih 18 letih v večini držav res zmanjšala.
 
 ```{r shiny, echo=FALSE, warning = FALSE}
 shinyAppDir("shiny", options=list(width="100%", height=800))
 ```
 
+&nbsp;
+
+# Zaključek
 
 
-
-<!-- Spodnji graf prikazuje porazdelitev števila naselij v občinah. -->
-
-<!-- ```{r histogram, echo=FALSE, message=FALSE, fig.align='center', fig.cap='Histogram števila naselij v občinah'} -->
-<!-- ggplot(obcine, aes(x=naselja)) + geom_histogram() + -->
-<!--   ggtitle("Pogostost števila naselij") + xlab("Število naselij") + ylab("Število občin") -->
-<!-- ``` -->
-
-<!-- *** -->
-
-<!-- # Analiza in vizualizacija podatkov -->
-
-<!-- ```{r vizualizacija, echo=FALSE, message=FALSE, warning=FALSE, results='hide'} -->
-<!-- source("vizualizacija/vizualizacija.r", encoding="UTF-8") -->
-<!-- ``` -->
-
-<!-- Spodnji zemljevid prikazuje povprečno velikost družine za vsako občino. -->
-
-<!-- ```{r zemljevid, echo=FALSE, fig.align='center', fig.cap='Zemljevid povprečnega števila otrok v družini'} -->
-<!-- ggplot() + geom_polygon(data=left_join(zemljevid, povprecja, by=c("OB_UIME"="obcina")), -->
-<!--                         aes(x=long, y=lat, group=group, fill=povprecje)) + -->
-<!--   ggtitle("Povprečno število otrok v družini") + xlab("") + ylab("") + -->
-<!--   guides(fill=guide_colorbar(title="Povprečje")) -->
-<!-- ``` -->
 
 <!-- *** -->
 
