@@ -25,17 +25,17 @@ library(tidyverse)
 
 #graf1 Rodnost naključnih 40 držav leta 2018
 drzave <- filter(zdruzeni.podatki.krajse,Leto==2018)[sample(nrow(filter(zdruzeni.podatki.krajse,Leto==2018)), 30), 1]
-zdruzeni.podatki.krajse <- filter(zdruzeni.podatki.krajse, Leto %in% c(2000,2018), Drzava %in% drzave)
+zdruzeni.podatki.krajse1 <- filter(zdruzeni.podatki.krajse, Leto %in% c(2000,2018), Drzava %in% drzave)
 
-graf1 <- dotchart(filter(arrange(zdruzeni.podatki.krajse, Rodnost), Leto==2018)$Rodnost,
-                  labels=filter(arrange(zdruzeni.podatki.krajse, Rodnost), Leto==2018)[,1], cex=.7, 
+graf1 <- dotchart(filter(arrange(zdruzeni.podatki.krajse1, Rodnost), Leto==2018)$Rodnost,
+                  labels=filter(arrange(zdruzeni.podatki.krajse1, Rodnost), Leto==2018)[,1], cex=.7, 
                   main="Rodnost leta 2018", xlab="Stevilo novorojenih otrok na 1000 prebivalcev")
 
 #graf2 Rodnost naključnih 40 držav leta 2000
-graf2 <- dotchart(filter(arrange(zdruzeni.podatki.krajse, Rodnost), Leto==2000)$Rodnost,
-                  labels=filter(arrange(zdruzeni.podatki.krajse, Rodnost), Leto==2000)[,1], cex=.7, 
+graf2 <- dotchart(filter(arrange(zdruzeni.podatki.krajse1, Rodnost), Leto==2000)$Rodnost,
+                  labels=filter(arrange(zdruzeni.podatki.krajse1, Rodnost), Leto==2000)[,1], cex=.7, 
                   main="Rodnost leta 2000", xlab="Stevilo novorojenih otrok na 1000 prebivalcev")
-remove(zdruzeni.podatki.krajse, drzave)
+remove(zdruzeni.podatki.krajse1, drzave)
 
 
 
@@ -48,17 +48,18 @@ graf3 <- ggplot(zdruzeni.podatki %>% filter(Drzava %in% c('Slovenia',
                                                           'Nigeria', 
                                                           'Iraq',
                                                           'South Africa',
-                                                          'India')),
+                                                          'India',
+                                                          'Brazil')),
                 aes(x=Leto,y=Rodnost,color=Drzava)) +
   geom_point(shape=21, size=2.5, fill= "black") +
   geom_line(size = 1.2) + 
   theme_classic() +
   labs(x="Leto", y ="Stevilo novorojenih otrok na 1000 prebivalcev", title ="Rodnost") +
   theme(axis.title=element_text(size=11), plot.title=element_text(size=15, hjust=0.5)) + 
-  scale_colour_manual(values=c("dodgerblue3","purple","springgreen4","black","orangered3","dark grey","yellow", "tan1"), 
+  scale_colour_manual(values=c("orangered3","dark grey","yellow","tan1","orchid2","springgreen4","dodgerblue3","purple","black"), 
                     name="Drzava",
-                    breaks=c('Slovenia', 'Germany', 'China', 'Japan', 'Nigeria',  'Iraq', 'South Africa', 'India'),
-                    labels=c('Slovenia', 'Germany', 'China', 'Japan', 'Nigeria', 'Iraq', 'South Africa', 'India'))
+                    breaks=c('Nigeria', 'Iraq', 'South Africa', 'India', 'Brazil', 'China', 'Germany', 'Slovenia', 'Japan'),
+                    labels=c('Nigeria', 'Iraq', 'South Africa', 'India', 'Brazil', 'China', 'Germany', 'Slovenia', 'Japan'))
 print(graf3)
 
 
@@ -95,7 +96,7 @@ graf6 <- ggplot(zdruzeni.podatki %>% filter(Leto==2018),
   geom_point() +
   scale_size(range = c(1,6)) +
   labs(x="BDP PPP ($)", y ="Stevilo novorojenih otrok na 1000 prebivalcev", 
-       title ="Povezava rodnosti, BDP-ja in pricakovane zivljenjske dobe 2018", 
+       title ="Povezava rodnosti, BDP-ja, pricakovane zivljenjske dobe ter umrljivostjo novorojenckov leta 2018", 
        colour="Pricakovana zivljenjska doba",
        size="Umrljivost novorojenckov \nna 1000 rojstev") +
   geom_smooth(method = 'loess', se = FALSE, color="black", size=1.5) +

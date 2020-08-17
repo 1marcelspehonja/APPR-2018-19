@@ -11,7 +11,18 @@ runtime: shiny
 ---
 
 <style type="text/css">
-
+h1.title {
+  font-size: 26px;
+  color: Dark Grey;
+}
+h4.author{
+  color:Grey;
+  margin-bottom: 40px;
+}
+h1.naslov{
+  font-size: 50px;
+  margin-bottom: 20px;
+}
 </style>
 
 ```{r setup, echo=FALSE, results='hide', message=FALSE, warning=FALSE}
@@ -28,18 +39,27 @@ source("lib/libraries.r", encoding="UTF-8")
 source("lib/rstudio.r", encoding="UTF-8")
 ```
 
-# Izbira tem
+<center> <h1 class="naslov">Rodnost po državah sveta</h1> </center>
 
-Za vzorec bomo prikazali nekaj podatkov o slovenskih občinah.
 
+# Izbira teme
+
+V projektu bom analiziral rodnost, to je pogostost rojevanja živorojenih otrok v kaki populaciji v določenem obdobju, izražena kot število živorojenih otrok na tisoč prebivalcev. Obravnaval bom letne podatke za posamezno državo in sicer od leta 2000 do 2018. Ugotavljal bom, kako je rodnost posameznih držav odvisna od različnih dejavnikov, kot so stopnja ekonomske razvitosti države, izobraženost, pričakovana življenjska doba, število splavov. Cilj naloge je ugotoviti ali imajo bolj razvite države res nižjo rodnost, kot države v razvoju, in kateri so najbolj pomembni dejavniki ki vplivajo na rodnost.
+
+<center>
 ![](slike/birth_rate.jpg){width=50%}
+</center>
 
+***
+# Obdelava, uvoz in čiščenje podatkov
 
 ```{r uvoz, echo=FALSE, message=FALSE, warning=FALSE}
 source("uvoz/uvoz.r", encoding="UTF-8")
 ```
 
 Uvozili smo podatke o državah sveta v obliki CSV s spletne strani WorldBank. Podatke sem uredil v tri razpredelnice v obliki *tidy data*.
+
+&nbsp;
 
 1. `Drzave sveta` - podatki o državah sveta
   - `Drzava` - spremenljivka: ime države (neurejen faktor),
@@ -52,11 +72,15 @@ Uvozili smo podatke o državah sveta v obliki CSV s spletne strani WorldBank. Po
   - `Procent vpisa v srednjo solo` - meritev: Procent vpisa otrok v srednjo šolo (število),
   - `Stevilo splavov` - meritev: Število splavov v enem letu (število).
   
+&nbsp;
+  
 2. `Celine` - podatki po celinah
   - `Celina` - spremenljivka: ime celine (neurejen faktor),
   - `Leto` - spremenljivka: Podatki o letu (števila od 2000 do 2018),
   - `Povprecje BDP` - meritev: Povprečen BDP po kupni moči (PPP) v ameriških dolarjih (število),
   - `Povprecje rodnost` - meritev: Povprečno število novorojenih otrok na 1000 ljudi (število).
+  
+&nbsp;
   
 3. `Religije` - podatki po religijah
   - `Religija` - spremenljivka: ime religije (neurejen faktor),
@@ -65,13 +89,21 @@ Uvozili smo podatke o državah sveta v obliki CSV s spletne strani WorldBank. Po
   - `Povprecje rodnost` - meritev: Povprečno število novorojenih otrok na 1000 ljudi (število).
 
 
-```{r vizualizacija, echo=FALSE, message=FALSE, warning=FALSE, results='hide'}
+***
+# Analiza in vizualizacija podatkov
+
+```{r vizualizacija, echo=FALSE, message=FALSE, warning=FALSE, results='hide', fig.show = 'hide'}
 source("vizualizacija/vizualizacija.r", encoding="UTF-8")
 ```
+
+Najprej sem si izbral osem držav iz različnih delov sveta in 
+
 &nbsp;
-```{r graf9, echo=FALSE, message=FALSE, fig.align='center', warning = FALSE}
+
+```{r graf3, echo=FALSE, message=FALSE, fig.align='center', warning = FALSE}
 print(graf3)
 ```
+
 &nbsp;
 
 &nbsp;
@@ -81,36 +113,7 @@ shinyAppDir("shiny", options=list(width="100%", height=800))
 ```
 
 
-<!-- ![](slike/grb.png) -->
 
-<!-- *** -->
-
-<!-- # Obdelava, uvoz in čiščenje podatkov -->
-
-<!-- ```{r uvoz, echo=FALSE, message=FALSE} -->
-<!-- source("uvoz/uvoz.r", encoding="UTF-8") -->
-<!-- ``` -->
-
-<!-- Uvozili smo podatke o občinah v obliki CSV s statističnega urada ter v obliki HTML -->
-<!-- z Wikipedije. Podatke imamo v dveh razpredelnicah v obliki *tidy data*. -->
-
-<!-- 1. `druzine` - podatki o družinah za vsako občino -->
-<!--   - `obcina` - spremenljivka: ime občine (neurejen faktor), -->
-<!--   - `velikost.druzine` - spremenljivka: število otrok v družini (število: 1, 2, 3 ali 4, kjer zadnja vrednost pomeni 4 ali več), -->
-<!--   - `stevilo.druzin` - meritev: število družin z ustreznim številom otrok v ustrezni občini (število). -->
-
-<!-- 2. `obcine` - podatki o občinah -->
-<!--   - `obcina` - spremenljivka: ime občine (neurejen faktor), -->
-<!--   - `povrsina` - meritev: površina občine v km$^2$ (število), -->
-<!--   - `prebivalci` - meritev: prebivalstvo občine (število), -->
-<!--   - `gostota` - meritev: število prebivalcev na km$^2$ (število), -->
-<!--   - `naselja` - meritev: število naselij v občini (število), -->
-<!--   - `ustanovitev` - meritev: leto ustanovitve občine (število), -->
-<!--   - `pokrajina` - meritev: pokrajina, ki ji občina pripada (neurejen faktor), -->
-<!--   - `regija` - meritev: regija, ki ji občina pripada (neurejen faktor), -->
-<!--   - `odcepitev` - meritev: podatki o občinah, od katerih se je občina odcepila (besedilo). -->
-
-<!-- **Opomba**: da bi razpredelnica `obcine` res bila v obliki *tidy data*, bi morali odstraniti stolpec `gostota` (saj je izpeljan iz stolpcev `povrsina` in `prebivalci`), podatke o pokrajinah pa bi morali premakniti v drugo razpredelnico, saj nekatere občine pripadajo dvema pokrajinama. Podobno bi morali narediti tudi s stolpcem `odcepitev`. -->
 
 <!-- Spodnji graf prikazuje porazdelitev števila naselij v občinah. -->
 
@@ -155,9 +158,3 @@ shinyAppDir("shiny", options=list(width="100%", height=800))
 <!--   guides(color=guide_legend(title="Skupina"), -->
 <!--          size=guide_legend(title="Prebivalci (* 1000)")) -->
 <!-- ``` -->
-
-***
-
-# ```{r shiny, echo=FALSE}
-# shinyAppDir("shiny", options=list(width="100%", height=600))
-# ```
