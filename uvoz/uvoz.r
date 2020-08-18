@@ -139,9 +139,9 @@ sapply(podatki.celine, class)
 
 sapply(zdruzeni.podatki, class)
 
-remove(podatki.gdp, podatki.izobrazba, podatki.rodnost, podatki.splavi, 
+rm(podatki.gdp, podatki.izobrazba, podatki.rodnost, podatki.splavi, 
        podatki.umrljivost.novorojenckov, podatki.zivlj.doba)
-remove(podatki.prebivalci, podatki.celine, podatki.religija)
+rm(podatki.prebivalci, podatki.celine, podatki.religija)
 
 
 

@@ -35,7 +35,7 @@ graf1 <- dotchart(filter(arrange(zdruzeni.podatki.krajse1, Rodnost), Leto==2018)
 graf2 <- dotchart(filter(arrange(zdruzeni.podatki.krajse1, Rodnost), Leto==2000)$Rodnost,
                   labels=filter(arrange(zdruzeni.podatki.krajse1, Rodnost), Leto==2000)[,1], cex=.7, 
                   main="Rodnost leta 2000", xlab="Stevilo novorojenih otrok na 1000 prebivalcev")
-remove(zdruzeni.podatki.krajse1, drzave)
+rm(zdruzeni.podatki.krajse1, drzave)
 
 
 
@@ -103,7 +103,7 @@ graf6 <- ggplot(zdruzeni.podatki %>% filter(Leto==2018),
   geom_smooth(method = 'loess', se = FALSE, color="black", size=1.5) +
   scale_color_gradient2(midpoint=mid, low="blue", high="yellow", mid="red")
 print(graf6)
-remove(mid)
+rm(mid)
 
 
 #graf7 Povezava med Rodnostjo in stopnjo izobrazbe
@@ -133,8 +133,6 @@ graf8 <- ggplot(zdruzeni.podatki %>% filter(Leto==2010),
   geom_smooth(method = 'loess', se = FALSE, color="red", size=1.2)
 print(graf8)
 
-
-#graf9
 
 
 # Zemljevid sveta - Rodnost
