@@ -57,15 +57,15 @@ V projektu bom analiziral rodnost, to je pogostost rojevanja živorojenih otrok 
 source("uvoz/uvoz.r", encoding="UTF-8")
 ```
 
-Uvozili smo podatke o državah sveta v obliki CSV s spletne strani WorldBank. Podatke sem uredil v tri razpredelnice v obliki *tidy data*.
+Uvozil sem podatke o državah sveta v obliki CSV s spletne strani WorldBank. Podatke sem uredil v tri razpredelnice v obliki *tidy data*.
 
 &nbsp;
 
 1. `Drzave sveta` - podatki o državah sveta
   - `Drzava` - spremenljivka: ime države (neurejen faktor),
-  - `Leto` - spremenljivka: Podatki Podatki o letu (števila od 2000 do 2018),
+  - `Leto` - spremenljivka: Podatki o letu (števila od 2000 do 2018),
   - `GDP PPP ($)` - meritev: BDP po kupni moči (PPP) v ameriških dolarjih (število),
-  - `Prebivalci` - meritev: število prebivalcev v posamezni državi (število),
+  - `Prebivalci` - meritev: Število prebivalcev v posamezni državi (število),
   - `Rodnost` - meritev: Število novorojenih otrok na 1000 ljudi (število),
   - `Pricakovana zivlj. doba` - meritev: Pričakovana življenjska doba ob rojstvu (število),
   - `Umrljivost novorojenckov` - meritev: Število smrti novorojenčkov na 1000 rojstev (število),
@@ -75,7 +75,7 @@ Uvozili smo podatke o državah sveta v obliki CSV s spletne strani WorldBank. Po
 &nbsp;
   
 2. `Celine` - podatki po celinah
-  - `Celina` - spremenljivka: ime celine (neurejen faktor),
+  - `Celina` - spremenljivka: Ime celine (neurejen faktor),
   - `Leto` - spremenljivka: Podatki o letu (števila od 2000 do 2018),
   - `Povprecje BDP` - meritev: Povprečen BDP po kupni moči (PPP) v ameriških dolarjih (število),
   - `Povprecje rodnost` - meritev: Povprečno število novorojenih otrok na 1000 ljudi (število).
@@ -83,7 +83,7 @@ Uvozili smo podatke o državah sveta v obliki CSV s spletne strani WorldBank. Po
 &nbsp;
   
 3. `Religije` - podatki po religijah
-  - `Religija` - spremenljivka: ime religije (neurejen faktor),
+  - `Religija` - spremenljivka: Ime religije (neurejen faktor),
   - `Leto` - spremenljivka: Podatki o letu (števila od 2000 do 2018),
   - `Povprecje BDP` - meritev: Povprečen BDP po kupni moči (PPP) v ameriških dolarjih (število),
   - `Povprecje rodnost` - meritev: Povprečno število novorojenih otrok na 1000 ljudi (število).
@@ -139,7 +139,7 @@ print(graf5)
 
 &nbsp;
 
-V drugem grafu pa sem države razporedil glede na prevladujočo religijo, izračunal povprečno rodnost in rezultat prikazal v črtnem diagramu za obdobje od 2000 do 2018. Največ novorojenih otrok imajo države islama, najmanj pa neverujoče države. V grafu močno iztopa hinduizem, saj se mu je rodnost v zadnjih 18 letih močno zmanjšala.
+V drugem grafu pa sem države razporedil glede na prevladujočo religijo, izračunal povprečno rodnost in rezultat prikazal v črtnem diagramu za obdobje od 2000 do 2018. Največ novorojenih otrok imajo države islama, najmanj pa neverujoče države. V grafu najbolj iztopa hinduizem, saj se mu je rodnost v zadnjih 18 letih močno zmanjšala.
 
 &nbsp;
 
