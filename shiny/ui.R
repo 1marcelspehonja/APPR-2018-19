@@ -1,22 +1,16 @@
 library(shiny)
 
-# shinyUI(fluidPage(
-#   
-#   titlePanel("Slovenske občine"),
-#   
-#    tabsetPanel(
-#        tabPanel("Rodnost",
-#                 DT::dataTableOutput("rodnost"))
-  #     
-  #     tabPanel("Število naselij",
-  #              sidebarPanel(
-  #                 uiOutput("pokrajine")
-  #               ),
-  #              mainPanel(plotOutput("naselja")))
-#      )
-# ))
-
-
+# shinyUI(
+#   fluidPage(
+# 
+#     titlePanel("Rodnost drzav sveta"),
+# 
+#     tabsetPanel(
+#        tabPanel(DT::dataTableOutput("rodnost"))
+#       )
+#   )
+# )
+  
 fluidPage(
   tabPanel("Zemljevid",
            sidebarPanel(
