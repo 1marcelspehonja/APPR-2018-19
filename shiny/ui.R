@@ -13,8 +13,8 @@ library(shiny)
   
 fluidPage(
   tabPanel("Zemljevid",
-           sidebarPanel(
-             selectInput("letnica", label = "Leto", 
-                         choices = unique(rodnost.vse$Leto)), width=2),
-           mainPanel(plotOutput("zemljevid1"), width=10))
+           sidebarPanel(selectInput("letnica", label = "Leto", 
+                                    choices = unique(rodnost.vse$Leto)), 
+                        width=2),
+          mainPanel(plotOutput("zemljevid1"), width=10))
 )
